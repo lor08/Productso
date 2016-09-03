@@ -1,10 +1,10 @@
 {
-    "name": "lor08/productso",
+    "name": "lor08/Productso",
     "type": "library",
     "description": ":package_description",
     "keywords": [
         "lor08",
-        "productso"
+        "Productso"
     ],
     "homepage": "https://github.com/lor08/productso",
     "license": "MIT",
@@ -18,7 +18,8 @@
     ],
     "require": {
         "illuminate/support": "~5.1",
-        "php" : "~5.6|~7.0"
+        "php" : "~5.6|~7.0",
+        "kalnoy/nestedset": "^4.0"
     },
     "require-dev": {
         "phpunit/phpunit" : "~4.0||~5.0",
@@ -27,12 +28,12 @@
     },
     "autoload": {
         "psr-4": {
-            "lor08\\productso\\": "src"
+            "lor08\\Productso\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "lor08\\productso\\": "tests"
+            "lor08\\Productso\\": "tests"
         }
     },
     "scripts": {
