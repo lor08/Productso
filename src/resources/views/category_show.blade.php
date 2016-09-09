@@ -19,7 +19,7 @@
     <ul class="menu-ul">
         @foreach($nodes as $node)
             <li>
-                <span>{{$node->name}}</span>
+                <span><a href="{{URL::to('/category/'.$node->slug)}}">{{$node->name}}</a></span>
                 @if($node->getDescendantCount()>0)
                     <ul class="sub-menu-ul">
                         @foreach($node->getDescendants() as $descend)
@@ -44,10 +44,28 @@
 
 
     <h1>Пример breadcrumbs</h1>
-    <style>.ibl {display:inline-block;}</style>
+    <style>.ibl {
+            display: inline-block;
+        }</style>
     <li class="ibl"><a href="{{URL::to('/')}}">Главная</a></li>
+    <li class="ibl">-><a href="{{URL::to('/category/')}}">Каталог</a></li>
     @foreach($node->getAncestors() as $descend)
         <li class="ibl">-><a href="{{URL::to('/category/'.$descend->slug)}}">{{$descend->name}}</a></li>
     @endforeach
     <li class="ibl">->{{$node->name}}</li>
+
+    <h1>Товары категории</h1>
+    <ul>
+        @foreach($products as $product)
+            <li>
+                @if($product->attaches()->count() > 0)
+                    <img src="{{URL::to($product->attaches->first()->filename)}}"
+                         alt="{{$product->attaches->first()->alt}} title="{{$product->attaches->first()->title}}>
+                @endif
+                <a href="{{URL::to('product/'.$product->slug.'/'.$node->id)}}">{{$product->name}}</a>
+            </li>
+        @endforeach
+    </ul>
+    {!! $products->links() !!}
 @endif
+
